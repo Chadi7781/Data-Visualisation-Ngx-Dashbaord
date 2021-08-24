@@ -1,0 +1,112 @@
+
+
+<div class="row">
+
+
+
+  <div class="col-lg-6">
+    <button  nbbutton="" matripple="" hero="" *ngIf="!isOverFlown"
+             class="mat-ripple size-medium shape-rectangle appearance-hero status-primary ng-star-inserted nb-transition"
+             (click)="export()">Export</button>
+
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body >
+        <!--          <select [(ngModel)]="lessThanOrGreaterThan" style="width: 150px;height: 30px;">-->
+        <!--            <option value='lessThan'>Less Than</option>-->
+        <!--            <option value='greaterThan'>Greater Than</option>-->
+        <!--          </select>&nbsp;&nbsp;-->
+        <!--          <input [(ngModel)]="filterLimit" placeholder="Filter Limit" style="width: 150px;height: 30px;"><br><br>-->
+        <!--          <button class="button" (click)="applyFilter(filterLimit)">Apply Filter</button>-->
+
+        <div class="row">
+          <div class="col-md-4">
+            <nb-select-label>Choix Période :</nb-select-label> <br><br>
+            <nb-select [(ngModel)]="from" style="width: 150px;height: 30px;">
+              <nb-option *ngFor="let m of this.data" [value]='m.value'>{{m.year}}</nb-option>
+            </nb-select>
+            &nbsp;&nbsp;
+
+            <nb-select [(ngModel)]="toMonth" style="width: 150px;height: 30px;">
+              <nb-option *ngFor="let m1 of data" [value]='m1.value'>{{m1.year}}</nb-option>
+            </nb-select>
+
+          </div>
+
+          <div class="col-md-4">
+            <nb-select-label>Chiffre d'affaire :</nb-select-label> <br><br>
+            <nb-select [(ngModel)]="lessThanOrGreaterThan" style="width: 150px;height: 30px;">
+              <nb-option [value]="lessThan" >lessThan</nb-option>
+              <nb-option [value]="greaterThan"  >greaterThan</nb-option>
+
+            </nb-select>
+            &nbsp;&nbsp;
+            <input [(ngModel)]="filterLimit" placeholder="Filter Chiffre affaire">
+            <br>
+            <br>
+            <br>
+            <button  nbbutton="" matripple="" hero="" *ngIf="!isOverFlown"
+                     class="mat-ripple size-medium shape-rectangle appearance-hero status-danger ng-star-inserted nb-transition"
+                     (click)="applyFilterChiffreAffaire(filterLimit)">Filter By Chiffre affaire</button>
+          </div>
+
+          <div class="col-md-4">
+            <nb-select-label>Filter Per Zone :</nb-select-label> <br><br>
+            <nb-select [(ngModel)]="lessThanOrGreaterThan" style="width: 150px;height: 30px;">
+              <nb-option [value]="sud" >sud</nb-option>
+              <nb-option [value]="nord"  >nord</nb-option>
+
+            </nb-select>
+            &nbsp;&nbsp;
+            <br>
+            <br>
+            <br>
+            <button  nbbutton="" matripple="" hero="" *ngIf="!isOverFlown"
+                     class="mat-ripple size-medium shape-rectangle appearance-hero status-warning ng-star-inserted nb-transition"
+                     (click)="showZone()">Filter By Chiffre affaire</button>
+          </div>
+
+
+        </div>
+        <br>
+        <br>
+
+        <button  nbbutton="" matripple="" outline="" class="mat-ripple appearance-outline size-medium shape-rectangle status-info ng-star-inserted nb-transition" aria-disabled="false" tabindex="0"
+                 (click)="filterYearDate()"
+        > Appliquer </button>
+      </nb-card-body>
+
+    </nb-card>
+  </div>
+
+</div>
+
+
+
+<div class="chart-diplayh">
+  <div style="width: 60%; margin: auto">
+    <canvas id="bar"></canvas>
+
+
+
+
+
+  </div>
+
+  <br>
+  <div style="width: 60%; margin: auto">
+    <canvas id="pie"></canvas>
+
+
+
+
+
+  </div>
+
+
+
+</div>
